@@ -1,0 +1,105 @@
+<mvc:View controllerName="project2.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:l="sap.ui.layout" 
+    xmlns:u="sap.ui.unified"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}" class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer">
+        <content>
+            <Table id="idExcelDataTable" 
+				class="sapUiSmallMargin"
+				sticky="ColumnHeaders,HeaderToolbar"
+				mode="SingleSelectLeft"
+				items="{localModel>/items}"
+				>
+				<headerToolbar>
+					<OverflowToolbar id="_IDGenOverflowToolbar1">
+						<Title id="_IDGenTitle1" text="Excel Data Manipulation Table" level="H2"/>
+						<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+						<Button id="_IDGenButton2"
+							tooltip="Add a new"
+							icon="sap-icon://add"
+							text="Add a new"
+							press="handleAddButtonPressed"/>						
+						<Button id="_IDGenButton1"
+							tooltip="Edit"
+							icon="sap-icon://edit"
+							text="Edit"
+							press="handleEditButtonPressed"/>
+						<u:FileUploader 
+						class="sapUiTinyMarginBegin" 
+						id="FileUploaderid" 
+						placeholder="Choose a file" 
+						name="myFileUpload"  
+						uploadUrl="upload/"
+						change="handleFileUploadPressed" 
+						/>
+						<!-- fileType="xlsx,csv" -->
+						<Button id="_IDShowButton2"
+							tooltip="Show data file"
+							icon="sap-icon://Show"
+							text="Show data file"
+							press="handleShowButtonPressed"
+							enabled="false"/>
+						<Button 
+							text="Delete All Records" 
+							press="onDeleteAllRecords" 
+							enabled="true"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<infoToolbar>
+					<OverflowToolbar id="vsdFilterBar" visible="false">
+						<Text id="vsdFilterLabel" />
+					</OverflowToolbar>
+				</infoToolbar>
+				<columns>
+					<Column width="5em" headerMenu="columnHeaderMenu" ><Text text="Id" /></Column>
+					<Column minScreenWidth="Tablet" headerMenu="columnHeaderMenu"  demandPopin="true" ><Text text="Email" /></Column>
+					<Column minScreenWidth="Tablet" headerMenu="columnHeaderMenu"  demandPopin="true" ><Text text="First Name" /></Column>
+					<Column minScreenWidth="Tablet" headerMenu="columnHeaderMenu"  demandPopin="true" ><Text text="Last Name" /></Column>
+					<Column minScreenWidth="Tablet" headerMenu="columnHeaderMenu"  demandPopin="true" hAlign="Center"><Text text="Avatar" /></Column>
+				</columns>
+				<items>
+					<ColumnListItem vAlign="Middle">
+						<cells>
+							<Text text="{localModel>exId}"/>
+							<Text text="{localModel>exEmail}"/>
+							<Text text="{localModel>exFirst_name}"/>
+							<Text text="{localModel>exLast_name}"/>
+							<Text text="{localModel>exAvatar}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<!-- <Table items="{localModel>/items}">
+				<columns>
+					<Column>
+						<Label text="Id"/>
+					</Column>
+					<Column>
+						<Label text="Email"/>
+					</Column>
+					<Column>
+						<Label text="First Name"/>
+					</Column>
+					<Column>
+						<Label text="Last Name"/>
+					</Column>
+					<Column>
+						<Label text="Avatar"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{localModel>exId}"/>
+							<Text text="{localModel>exEmail}"/>
+							<Text text="{localModel>exFirst_name}"/>
+							<Text text="{localModel>exLast_name}"/>
+							<Text text="{localModel>exAvatar}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table> -->
+        </content>
+    </Page>
+</mvc:View>
